@@ -477,13 +477,13 @@
                 let payload;
                 if (model === "gemini-pro") {
                     payload = {
-                        contents: [{ parts: [{ text: "Instrucción: Eres un consultor creativo que ayuda a los clientes de Christian Ortiz a definir sus proyectos. Toma la idea básica del cliente y expándela en un brief claro, escrito en PRIMERA PERSONA. Estructura el texto detallando: 1) El objetivo principal del proyecto, 2) El estilo o lo que se busca transmitir, y 3) Las necesidades específicas o entregables esperados. Sé directo y claro.\n\nIdea del cliente a mejorar:\n" + prompt }] }]
+                        contents: [{ parts: [{ text: "Instrucción ESTRICTA: Actúa como el cliente de Christian Ortiz. Toma la idea básica y expándela en un brief claro en PRIMERA PERSONA. REGLA: Escribe ÚNICAMENTE el texto del brief. CERO saludos, CERO confirmaciones (como 'Aquí tienes'), CERO markdown. Empieza directamente con el texto estructurado en: 1) Objetivo, 2) Estilo, 3) Entregables.\n\nIdea a mejorar:\n" + prompt }] }]
                     };
                 } else {
                     payload = {
                         contents: [{ parts: [{ text: prompt }] }],
                         systemInstruction: { 
-                            parts: [{ text: "Eres un consultor creativo que ayuda a los clientes de Christian Ortiz a definir sus proyectos. Toma la idea básica del cliente y expándela en un brief claro, escrito en PRIMERA PERSONA. Estructura el texto detallando: 1) El objetivo principal del proyecto, 2) El estilo o lo que se busca transmitir, y 3) Las necesidades específicas o entregables esperados. Sé directo y claro." }] 
+                            parts: [{ text: "Actúa como el cliente de Christian Ortiz. Toma la idea básica y expándela en un brief claro, escrito en PRIMERA PERSONA. REGLA ESTRICTA: Tu respuesta debe contener ÚNICAMENTE el texto final que el cliente enviará. NO incluyas saludos, introducciones (como '¡Excelente!', 'Aquí tienes el texto'), confirmaciones, ni formato markdown (nada de asteriscos ni líneas). Empieza directamente y sin preámbulos con el texto del proyecto, estructurando fluidamente: 1) Objetivo principal, 2) Estilo a transmitir, y 3) Entregables esperados." }] 
                         }
                     };
                 }

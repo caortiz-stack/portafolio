@@ -22,7 +22,6 @@
             color: #fff;
         }
 
-        /* Limpieza profunda de contenedores de Behance */
         .Project-projectWrapper-qk5, .Project-project-z8i, .project-content-wrap,
         #project-canvas, #project-modules {
             margin: 0 !important; padding: 0 !important;
@@ -39,14 +38,13 @@
         /* === FONDO LÍQUIDO HOLOGRÁFICO (100% GPU) === */
         .holographic-bg {
             position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-            z-index: -1; background: #000; overflow: hidden;
-            pointer-events: none;
+            z-index: -1; background: #000; overflow: hidden; pointer-events: none;
         }
 
         .liquid-aura {
-            position: absolute; border-radius: 50%;
-            filter: blur(100px); will-change: transform;
-            opacity: 0.25; animation: liquidMove 25s infinite alternate ease-in-out;
+            position: absolute; border-radius: 50%; filter: blur(100px); 
+            will-change: transform; opacity: 0.25; 
+            animation: liquidMove 25s infinite alternate ease-in-out;
             transform: translateZ(0);
         }
 
@@ -65,7 +63,7 @@
             opacity: 0.05; z-index: 150; pointer-events: none;
         }
 
-        /* === 1. INTRO HERO (PUNTO DE DIFUMINADO INICIAL) === */
+        /* === INTRO HERO === */
         .hero-intro {
             height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center;
             text-align: center; background: transparent; position: relative; z-index: 110;
@@ -83,29 +81,20 @@
 
         .hero-intro p { font-size: 0.75rem; letter-spacing: 12px; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-top: 35px; }
 
-        /* === 2. GALERÍA UNIFICADA E INFINITA === */
-        
-        #app {
-            margin-top: -20vh; /* Sube la galería por debajo del Hero para fundirlos */
-            position: relative;
-            z-index: 80;
-        }
-
+        /* === GALERÍA UNIFICADA E INFINITA === */
+        #app { margin-top: -20vh; position: relative; z-index: 80; }
         #project-modules { position: relative; }
 
-        /* MÁSCARA 1: Difumina la primera imagen en su borde superior */
         .Project-projectModuleContainer-BtF:first-of-type {
             mask-image: linear-gradient(to bottom, transparent 0px, black 300px);
             -webkit-mask-image: linear-gradient(to bottom, transparent 0px, black 300px);
         }
 
-        /* MÁSCARA 2: Difumina la última imagen en su borde inferior */
         .Project-projectModuleContainer-BtF:last-of-type {
             mask-image: linear-gradient(to bottom, black calc(100% - 350px), transparent 100%);
             -webkit-mask-image: linear-gradient(to bottom, black calc(100% - 350px), transparent 100%);
         }
 
-        /* Ajuste de Sellado Anti-Líneas */
         .Project-projectModuleContainer-BtF {
             margin: 0 !important; margin-top: -1px !important; padding: 0 !important; 
             line-height: 0 !important; display: flex !important; flex-direction: column;
@@ -115,24 +104,16 @@
         .project-module-image img {
             display: block !important; width: 100% !important; height: auto !important;
             border: none !important; margin: 0 !important; padding: 0 !important;
-            vertical-align: bottom; margin-bottom: -1px; /* Sella cualquier grieta de renderizado */
+            vertical-align: bottom; margin-bottom: -1px; 
         }
 
-        /* === 3. FOOTER Y FORMULARIO (SÓLIDO Y PROFESIONAL) === */
+        /* === FOOTER Y FORMULARIO (SÓLIDO Y PROFESIONAL) === */
         .co-footer {
             position: relative;
-            /* El difuminado de salida de la imagen empalma con este degradado */
             background: linear-gradient(to bottom, transparent 0%, #000 350px, #000 100%);
-            color: #ffffff;
-            /* Solapamiento extremo para asegurar continuidad total */
-            margin-top: -250px; 
-            padding: 300px 24px 120px;
+            color: #ffffff; margin-top: -250px; padding: 300px 24px 120px;
             font-family: 'Inter', -apple-system, sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            overflow: hidden;
-            z-index: 200;
+            display: flex; flex-direction: column; align-items: center; overflow: hidden; z-index: 200;
         }
 
         .co-footer-glow {
@@ -145,10 +126,7 @@
         .co-footer-content { position: relative; z-index: 5; max-width: 850px; width: 100%; }
         .co-footer h2 { font-size: clamp(2.5rem, 9vw, 4.5rem); font-weight: 800; letter-spacing: -3px; margin-bottom: 60px; line-height: 1; text-align: center; color: #fff; }
 
-        .co-form {
-            display: grid; grid-template-columns: 1fr 1fr; gap: 24px; text-align: left;
-        }
-
+        .co-form { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; text-align: left; }
         .co-form-group { display: flex; flex-direction: column; }
         .co-form-group.full-width { grid-column: 1 / -1; }
 
@@ -158,24 +136,19 @@
         }
 
         .co-form-group input, .co-form-group textarea {
-            background: rgba(15, 15, 15, 0.85) !important; 
-            border: 1px solid rgba(255, 255, 255, 0.15) !important;
+            background: rgba(15, 15, 15, 0.85) !important; border: 1px solid rgba(255, 255, 255, 0.15) !important;
             padding: 22px !important; color: #ffffff !important; border-radius: 8px !important; 
             font-size: 1rem !important; outline: none !important; backdrop-filter: blur(20px); 
             transition: all 0.3s ease; font-family: 'Inter', sans-serif;
-            will-change: border-color, box-shadow;
         }
 
         .co-form-group input::placeholder, .co-form-group textarea::placeholder { color: rgba(255,255,255,0.3) !important; }
-
         .co-form-group input:focus, .co-form-group textarea:focus {
             border-color: #00f2ff !important; background: rgba(25, 25, 25, 0.95) !important;
             box-shadow: 0 0 0 3px rgba(0, 242, 255, 0.1) !important;
         }
 
-        .co-form-actions {
-            grid-column: 1 / -1; display: flex; gap: 16px; margin-top: 30px;
-        }
+        .co-form-actions { grid-column: 1 / -1; display: flex; gap: 16px; margin-top: 30px; position: relative; }
 
         .co-submit-btn {
             flex: 2; background: #ffffff !important; color: #000000 !important; padding: 22px !important; 
@@ -186,7 +159,7 @@
         }
 
         .co-ai-btn {
-            flex: 1; background: rgba(0, 242, 255, 0.05) !important; color: #00f2ff !important; padding: 22px !important;
+            width: 100%; background: rgba(0, 242, 255, 0.05) !important; color: #00f2ff !important; padding: 22px !important;
             border: 1px solid rgba(0, 242, 255, 0.4) !important; border-radius: 8px !important;
             font-weight: 800 !important; text-transform: uppercase !important; font-size: 0.8rem !important; 
             cursor: pointer !important; display: flex; align-items: center; justify-content: center; gap: 10px;
@@ -198,12 +171,74 @@
 
         .co-ai-status {
             grid-column: 1 / -1; color: #00f2ff; font-size: 0.85rem; font-weight: 600;
-            display: none; align-items: center; gap: 12px; margin-top: 15px;
-            padding: 16px; background: rgba(0,242,255,0.08); border-left: 3px solid #00f2ff;
-            border-radius: 4px;
+            display: none; align-items: center; justify-content: center; gap: 12px; margin-top: 15px;
+            padding: 16px; background: rgba(0,242,255,0.08); border-left: 3px solid #00f2ff; border-radius: 4px;
         }
 
         .co-spinner { width: 16px; height: 16px; border: 2px solid rgba(0,242,255,0.2); border-top-color: #00f2ff; border-radius: 50%; animation: spin 0.8s linear infinite; }
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        .form-message { grid-column: 1 / -1; padding: 15px; border-radius: 8px; font-size: 0.9rem; font-weight: 600; display: none; text-align: center; margin-top: 15px; }
+        .form-message.success { background: rgba(0, 255, 136, 0.1); color: #00ff88; border: 1px solid rgba(0, 255, 136, 0.3); display: block; }
+        .form-message.error { background: rgba(255, 50, 50, 0.1); color: #ff3232; border: 1px solid rgba(255, 50, 50, 0.3); display: block; }
+
+        /* === EMERGENTE IA (POPOVER) === */
+        .ai-popover-wrapper {
+            flex: 1;
+            position: relative;
+            display: flex;
+        }
+
+        .ai-popover {
+            position: absolute;
+            bottom: calc(100% + 15px);
+            right: 0;
+            width: 340px;
+            background: rgba(10, 10, 10, 0.98);
+            border: 1px solid rgba(0, 242, 255, 0.4);
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.9), 0 0 20px rgba(0, 242, 255, 0.15);
+            backdrop-filter: blur(25px);
+            display: none; /* Inicialmente oculto */
+            flex-direction: column;
+            gap: 15px;
+            z-index: 300;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .ai-popover.active {
+            display: flex;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .ai-popover h4 {
+            margin: 0; font-size: 0.85rem; color: #00f2ff; text-transform: uppercase;
+            letter-spacing: 1px; display: flex; justify-content: space-between; align-items: center;
+        }
+
+        .ai-popover-close {
+            cursor: pointer; color: rgba(255,255,255,0.4); font-size: 1.2rem; transition: color 0.2s;
+        }
+        .ai-popover-close:hover { color: #fff; }
+
+        .ai-popover input {
+            background: rgba(255, 255, 255, 0.05) !important;
+            border: 1px solid rgba(255, 255, 255, 0.1) !important;
+            padding: 15px !important; color: #fff !important; border-radius: 8px !important;
+            font-size: 0.9rem !important; width: 100%; box-sizing: border-box; outline: none !important;
+        }
+        .ai-popover input:focus { border-color: #00f2ff !important; }
+
+        .ai-popover-submit {
+            background: #00f2ff; color: #000; border: none; padding: 15px; border-radius: 8px;
+            font-weight: 800; cursor: pointer; text-transform: uppercase; font-size: 0.85rem;
+            transition: all 0.2s; display: flex; align-items: center; justify-content: center; gap: 8px;
+        }
+        .ai-popover-submit:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(0, 242, 255, 0.3); }
 
         .co-footer-bottom {
             margin-top: 100px; padding-top: 40px; border-top: 1px solid rgba(255,255,255,0.05);
@@ -215,6 +250,7 @@
             .co-form, .co-form-actions { grid-template-columns: 1fr; flex-direction: column; }
             .hero-intro h1 { font-size: 3.8rem; letter-spacing: -2px; }
             .co-footer { padding: 200px 20px 80px; }
+            .ai-popover { width: 100%; bottom: calc(100% + 10px); right: auto; }
         }
     </style>
 </head>
@@ -223,28 +259,24 @@
     
     <div class="film-grain"></div>
     
-    <!-- FONDO HOLOGRÁFICO DINÁMICO -->
     <div class="holographic-bg">
         <div class="liquid-aura aura-1"></div>
         <div class="liquid-aura aura-2"></div>
         <div class="liquid-aura aura-3"></div>
     </div>
 
-    <!-- 1. PORTADA DIFUMINADA -->
     <section class="hero-intro" id="hero">
         <p>Visionary Design & Direction</p>
         <h1 id="hero-title">CHRISTIAN<br>ORTIZ</h1>
         <p>Studio Portfolio 2025</p>
     </section>
 
-    <!-- 2. GALERÍA SECUENCIAL ULTRA RÁPIDA -->
     <div id="app">
         <div class="App-app-AxT">
             <div class="FocusedModal-modal-rUJ">
                 <div class="FocusedModal-content-i9a FocusedModal-modalContent-Pcr">
                     <div id="project-modules">
-                        
-                        <!-- Módulos de Imagen con Optimización de carga (Ultra Fast) -->
+                        <!-- Módulos Optimizados -->
                         <section class="Project-projectModuleContainer-BtF"><div class="project-module-image"><img src="https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/e77f2c231612085.688c2d2d23982.png" alt="Portafolio 1" fetchpriority="high" decoding="async"></div></section>
                         <section class="Project-projectModuleContainer-BtF"><div class="project-module-image"><img src="https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/2b7f6d231612085.688d7bbc5a1e5.png" alt="Portafolio 2" loading="lazy" decoding="async"></div></section>
                         <section class="Project-projectModuleContainer-BtF"><div class="project-module-image"><img src="https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/42c1ab231612085.689a6c1b774b3.png" alt="Portafolio 3" loading="lazy" decoding="async"></div></section>
@@ -262,7 +294,7 @@
         </div>
     </div>
 
-    <!-- 3. FOOTER (Fusión Perfecta con la última imagen) -->
+    <!-- 3. FOOTER CON FORMULARIO BLINDADO Y EMERGENTE IA -->
     <footer class="co-footer">
         <div class="co-footer-glow"></div>
         <div class="co-footer-content">
@@ -279,7 +311,7 @@
                 </div>
                 <div class="co-form-group">
                     <label>Teléfono</label>
-                    <input type="tel" name="phone" placeholder="+00 000 000 (opcional)">
+                    <input type="tel" name="phone" placeholder="+00 000 000 000">
                 </div>
                 <div class="co-form-group">
                     <label>Proyecto</label>
@@ -287,19 +319,36 @@
                 </div>
                 <div class="co-form-group full-width">
                     <label>Visión del Proyecto</label>
-                    <textarea id="co-ai-textarea" name="message" rows="6" placeholder="Cuéntame tu idea y el asistente Gemini IA la profesionalizará..." required></textarea>
+                    <textarea id="co-ai-textarea" name="message" rows="6" placeholder="Describe brevemente tu idea (Ej. Quiero una identidad visual para mi cafetería...)" required></textarea>
+                    
+                    <!-- Indicador de carga -->
                     <div id="co-ai-loading" class="co-ai-status">
-                        <div class="co-spinner"></div> El asistente Gemini está redactando tu propuesta...
+                        <div class="co-spinner"></div> Procesando solicitud con Gemini IA...
                     </div>
                 </div>
+                
+                <div id="co-form-feedback" class="form-message"></div>
                 
                 <div class="co-form-actions">
                     <button type="submit" class="co-submit-btn">Enviar Propuesta</button>
                     
-                    <button type="button" id="co-ai-enhance-btn" class="co-ai-btn">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L14.5 9.5L22 12L14.5 14.5L12 22L9.5 14.5L2 12L9.5 9.5L12 2Z"/></svg>
-                        Asistir con IA
-                    </button>
+                    <!-- Contenedor relativo para posicionar el Popover -->
+                    <div class="ai-popover-wrapper">
+                        <button type="button" id="co-ai-trigger-btn" class="co-ai-btn">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L14.5 9.5L22 12L14.5 14.5L12 22L9.5 14.5L2 12L9.5 9.5L12 2Z"/></svg>
+                            Asistir con IA
+                        </button>
+
+                        <!-- EL POPUP EMERGENTE -->
+                        <div class="ai-popover" id="ai-settings-popover">
+                            <h4>✨ Personaliza la IA <span class="ai-popover-close" id="ai-close-popover">✕</span></h4>
+                            <p style="font-size: 0.75rem; color: rgba(255,255,255,0.6); margin: 0; line-height: 1.4;">Dale instrucciones a la IA para redactar la visión de tu proyecto.</p>
+                            <input type="text" id="co-ai-instruction" placeholder="Ej. Tono elegante, enfocado en jóvenes...">
+                            <button type="button" class="ai-popover-submit" id="ai-run-btn">
+                                Generar Propuesta 🪄
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </form>
 
@@ -310,23 +359,70 @@
         </div>
     </footer>
 
-    <!-- SCRIPT OPTIMIZADO -->
+    <!-- SCRIPT CON IA FUNCIONAL Y POPUP -->
     <script>
-        const apiKey = ""; 
-        const aiBtn = document.getElementById('co-ai-enhance-btn');
+        // TU CLAVE DE API INTEGRADA PARA FUNCIONAR FUERA DE ESTE ENTORNO (GitHub Pages, Local, etc.)
+        const apiKey = "AIzaSyDhCJwcsQwghjKngd7M-ohMGm64C8cEu0M"; 
+        
+        // Elementos de la IA y el Popup
+        const aiTriggerBtn = document.getElementById('co-ai-trigger-btn');
+        const popover = document.getElementById('ai-settings-popover');
+        const closePopoverBtn = document.getElementById('ai-close-popover');
+        const runAiBtn = document.getElementById('ai-run-btn');
+        
         const textarea = document.getElementById('co-ai-textarea');
+        const customInstruction = document.getElementById('co-ai-instruction');
         const loading = document.getElementById('co-ai-loading');
+        
+        // Elementos Generales
         const heroTitle = document.getElementById('hero-title');
+        const form = document.getElementById('co-proposal-form');
+        const formFeedback = document.getElementById('co-form-feedback');
+        const submitBtn = document.querySelector('.co-submit-btn');
 
-        // RequestAnimationFrame para un scroll cinematográfico sin caídas de FPS
+        // ENVÍO DE FORMULARIO PROTEGIDO (AJAX)
+        if (form) {
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const originalText = submitBtn.innerHTML;
+                submitBtn.innerHTML = "Enviando...";
+                submitBtn.disabled = true;
+                formFeedback.className = "form-message";
+                formFeedback.style.display = "none";
+
+                try {
+                    const response = await fetch(form.action, {
+                        method: 'POST',
+                        body: new FormData(form),
+                        headers: { 'Accept': 'application/json' }
+                    });
+
+                    if (response.ok) {
+                        formFeedback.textContent = "¡Propuesta enviada con éxito! Me pondré en contacto contigo pronto.";
+                        formFeedback.classList.add("success");
+                        form.reset();
+                    } else {
+                        formFeedback.textContent = "Hubo un problema de servidor al enviar. Intenta de nuevo.";
+                        formFeedback.classList.add("error");
+                    }
+                } catch (error) {
+                    formFeedback.textContent = "Error de conexión (Posible bloqueo de red hacia Formspree). Verifica tu conexión o envía un correo directo.";
+                    formFeedback.classList.add("error");
+                } finally {
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.disabled = false;
+                }
+            });
+        }
+
+        // SCROLL CINEMATOGRÁFICO
         let isTicking = false;
         window.addEventListener('scroll', () => {
-            if (!isTicking) {
+            if (!isTicking && heroTitle) {
                 window.requestAnimationFrame(() => {
                     let value = window.scrollY;
                     let opacity = 1 - (value / 600);
                     let blur = value / 40;
-                    
                     if (opacity >= 0) {
                         heroTitle.style.opacity = opacity;
                         heroTitle.style.transform = `translate3d(0, ${value * 0.25}px, 0) scale(${1 - (value * 0.0004)})`;
@@ -338,39 +434,91 @@
             }
         }, { passive: true });
 
-        // Lógica de Asistente Gemini IA
-        async function fetchGemini(prompt, retries = 5, delay = 1000) {
-            const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
+        // LÓGICA DE APERTURA DEL POPUP
+        aiTriggerBtn.addEventListener('click', () => {
+            const txt = textarea.value.trim();
+            // Validación aquí: si está vacío, avisa de inmediato y no abre el popup.
+            if (txt.length < 5) {
+                alert("⚠️ Por favor, escribe primero una idea básica en el campo 'Visión del Proyecto'. La IA necesita algo de contexto para empezar.");
+                textarea.focus();
+                return;
+            }
+            
+            // Si hay texto, mostrar popover
+            popover.style.display = 'flex';
+            setTimeout(() => popover.classList.add('active'), 10);
+        });
+
+        // CERRAR POPUP
+        closePopoverBtn.addEventListener('click', () => {
+            popover.classList.remove('active');
+            setTimeout(() => popover.style.display = 'none', 300);
+        });
+
+        // EJECUCIÓN DE LA IA DESDE EL POPUP
+        async function fetchGemini(prompt, retries = 3, delay = 1000) {
+            // Utilizamos el modelo gemini-1.5-flash que es 100% compatible y estable con tu API Key pública
+            const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
             const payload = {
                 contents: [{ parts: [{ text: prompt }] }],
                 systemInstruction: { 
-                    parts: [{ text: "Eres el Director Creativo Estratégico de Christian Ortiz. Transforma el brief del cliente en un documento profesional, detallado y lujoso. Mantén el idioma original." }] 
+                    parts: [{ text: "Eres un consultor creativo que ayuda a los clientes de Christian Ortiz a definir sus proyectos. Toma la idea básica del cliente y expándela en un brief claro, escrito en PRIMERA PERSONA. Estructura el texto detallando: 1) El objetivo principal del proyecto, 2) El estilo o lo que se busca transmitir, y 3) Las necesidades específicas o entregables esperados. Sé directo y claro." }] 
                 }
             };
 
             for (let i = 0; i < retries; i++) {
                 try {
-                    const response = await fetch(url, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
+                    const response = await fetch(url, { 
+                        method: 'POST', 
+                        headers: { 'Content-Type': 'application/json' }, 
+                        body: JSON.stringify(payload) 
+                    });
+                    
                     const data = await response.json();
+                    
+                    if (!response.ok) {
+                        throw new Error(data.error?.message || "Error al procesar la respuesta");
+                    }
+                    
                     return data.candidates?.[0]?.content?.parts?.[0]?.text;
                 } catch (err) {
-                    if (i === retries - 1) throw err;
+                    if (i === retries - 1) throw err; 
                     await new Promise(r => setTimeout(r, delay));
                     delay *= 2;
                 }
             }
         }
 
-        aiBtn.addEventListener('click', async () => {
+        runAiBtn.addEventListener('click', async () => {
             const txt = textarea.value.trim();
-            if (txt.length < 5) return;
-            aiBtn.disabled = true;
+            const instruction = customInstruction.value.trim();
+
+            // Ocultar Popover (ya validamos antes que había texto)
+            popover.classList.remove('active');
+            setTimeout(() => popover.style.display = 'none', 300);
+
+            // Bloquear botón principal y mostrar animación de carga
+            aiTriggerBtn.disabled = true;
             loading.style.display = 'flex';
+            
+            let promptBase = `Toma esta idea inicial mía: "${txt}" y ayúdame a estructurarla para explicar claramente lo que estoy buscando.`;
+            if (instruction) {
+                promptBase += `\n\nPor favor, ten en cuenta también este enfoque adicional: "${instruction}".`;
+            }
+
             try {
-                const res = await fetchGemini(`Profesionaliza este brief para un artista visual: ${txt}`);
-                if (res) textarea.value = res;
-            } catch (e) { console.error(e); }
-            finally { aiBtn.disabled = false; loading.style.display = 'none'; }
+                const res = await fetchGemini(promptBase);
+                if (res) {
+                    textarea.value = res; // Rellena el campo con el resultado
+                }
+            } catch (e) { 
+                console.error(e);
+                alert("Error de Gemini: " + e.message + "\n\nVerifica que tu API Key sea válida y no tenga restricciones de dominio.");
+            } finally { 
+                // Restaurar botón y ocultar carga
+                aiTriggerBtn.disabled = false; 
+                loading.style.display = 'none'; 
+            }
         });
     </script>
 </body>

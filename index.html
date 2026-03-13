@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html style="overflow-y: auto; overscroll-behavior: none;" lang="es-ES">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Christian Ortiz :: Visual Artist & Designer 2025</title>
+    
+    <link rel="stylesheet" href="https://a5.behance.net/ceea7d27937d45f957b3012608e5cb5864e51b96/css/networki-main.css?cb=264615658" type="text/css">
+    <link rel="stylesheet" href="https://a5.behance.net/ceea7d27937d45f957b3012608e5cb5864e51b96/css/responsive.css?cb=264615658" type="text/css">
+
+    <style>
+        /* === NÚCLEO DE RENDIMIENTO ULTRA RÁPIDO Y CONTINUIDAD === */
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
+        #top-panel, .js-top-panel, .MessageBanner-messageBanner-Lb_ { display: none !important; }
+        
+        body { 
+            overflow-x: hidden !important; 
+            background: #000 !important; 
+            margin: 0; padding: 0;
+            font-family: 'Inter', -apple-system, sans-serif;
+            color: #fff;
+        }
+
+        /* Limpieza profunda de contenedores de Behance */
+        .Project-projectWrapper-qk5, .Project-project-z8i, .project-content-wrap,
+        #project-canvas, #project-modules {
+            margin: 0 !important; padding: 0 !important;
+            background: transparent !important;
+            font-size: 0 !important; line-height: 0 !important;
+            border: none !important;
+            display: flex; flex-direction: column;
+        }
+
+        .js-module-add-to-collection, .js-module-permalink, .js-module-similar-images,
+        .IconDropdown-wrapper-dLy, .FocusedModal-close-_Ua, .FocusedModal-titleBar-b2K,
+        .Project-floatingUserActionTablet-EUf { display: none !important; }
+
+        /* === FONDO LÍQUIDO HOLOGRÁFICO (100% GPU) === */
+        .holographic-bg {
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+            z-index: -1; background: #000; overflow: hidden;
+            pointer-events: none;
+        }
+
+        .liquid-aura {
+            position: absolute; border-radius: 50%;
+            filter: blur(100px); will-change: transform;
+            opacity: 0.25; animation: liquidMove 25s infinite alternate ease-in-out;
+            transform: translateZ(0);
+        }
+
+        .aura-1 { width: 60vw; height: 60vw; background: radial-gradient(circle, #00f2ff 0%, #7000ff 70%); top: -10%; left: -10%; }
+        .aura-2 { width: 50vw; height: 50vw; background: radial-gradient(circle, #ff00ea 0%, #0044ff 70%); bottom: -5%; right: -10%; animation-delay: -5s; }
+        .aura-3 { width: 40vw; height: 40vw; background: radial-gradient(circle, #ffffff 0%, #00d4ff 70%); top: 30%; left: 30%; animation-delay: -10s; opacity: 0.15; }
+
+        @keyframes liquidMove {
+            0% { transform: translate3d(0, 0, 0) rotate(0deg) scale(1); }
+            100% { transform: translate3d(100px, 50px, 0) rotate(90deg) scale(1.2); }
+        }
+
+        .film-grain {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background-image: url("https://grainy-gradients.vercel.app/noise.svg");
+            opacity: 0.05; z-index: 150; pointer-events: none;
+        }
+
+        /* === 1. INTRO HERO (PUNTO DE DIFUMINADO INICIAL) === */
+        .hero-intro {
+            height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center;
+            text-align: center; background: transparent; position: relative; z-index: 110;
+            mask-image: linear-gradient(to bottom, black 65%, transparent 100%);
+            -webkit-mask-image: linear-gradient(to bottom, black 65%, transparent 100%);
+            pointer-events: none;
+        }
+
+        .hero-intro h1 {
+            font-size: clamp(3.5rem, 15vw, 8.5rem); font-weight: 900; letter-spacing: -6px; margin: 0; line-height: 0.85;
+            background: linear-gradient(180deg, #fff 60%, rgba(255,255,255,0.2) 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            will-change: opacity, transform; transform: translateZ(0);
+        }
+
+        .hero-intro p { font-size: 0.75rem; letter-spacing: 12px; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-top: 35px; }
+
+        /* === 2. GALERÍA UNIFICADA E INFINITA === */
+        
+        #app {
+            margin-top: -20vh; /* Sube la galería por debajo del Hero para fundirlos */
+            position: relative;
+            z-index: 80;
+        }
+
+        #project-modules { position: relative; }
+
+        /* MÁSCARA 1: Difumina la primera imagen en su borde superior */
+        .Project-projectModuleContainer-BtF:first-of-type {
+            mask-image: linear-gradient(to bottom, transparent 0px, black 300px);
+            -webkit-mask-image: linear-gradient(to bottom, transparent 0px, black 300px);
+        }
+
+        /* MÁSCARA 2: Difumina la última imagen en su borde inferior */
+        .Project-projectModuleContainer-BtF:last-of-type {
+            mask-image: linear-gradient(to bottom, black calc(100% - 350px), transparent 100%);
+            -webkit-mask-image: linear-gradient(to bottom, black calc(100% - 350px), transparent 100%);
+        }
+
+        /* Ajuste de Sellado Anti-Líneas */
+        .Project-projectModuleContainer-BtF {
+            margin: 0 !important; margin-top: -1px !important; padding: 0 !important; 
+            line-height: 0 !important; display: flex !important; flex-direction: column;
+            position: relative; z-index: 80; background: transparent;
+        }
+
+        .project-module-image img {
+            display: block !important; width: 100% !important; height: auto !important;
+            border: none !important; margin: 0 !important; padding: 0 !important;
+            vertical-align: bottom; margin-bottom: -1px; /* Sella cualquier grieta de renderizado */
+        }
+
+        /* === 3. FOOTER Y FORMULARIO (SÓLIDO Y PROFESIONAL) === */
+        .co-footer {
+            position: relative;
+            /* El difuminado de salida de la imagen empalma con este degradado */
+            background: linear-gradient(to bottom, transparent 0%, #000 350px, #000 100%);
+            color: #ffffff;
+            /* Solapamiento extremo para asegurar continuidad total */
+            margin-top: -250px; 
+            padding: 300px 24px 120px;
+            font-family: 'Inter', -apple-system, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow: hidden;
+            z-index: 200;
+        }
+
+        .co-footer-glow {
+            position: absolute; top: 15%; left: 50%; transform: translateX(-50%);
+            width: 1000px; height: 600px;
+            background: radial-gradient(circle, rgba(0, 242, 255, 0.06) 0%, transparent 60%);
+            pointer-events: none; z-index: 1;
+        }
+
+        .co-footer-content { position: relative; z-index: 5; max-width: 850px; width: 100%; }
+        .co-footer h2 { font-size: clamp(2.5rem, 9vw, 4.5rem); font-weight: 800; letter-spacing: -3px; margin-bottom: 60px; line-height: 1; text-align: center; color: #fff; }
+
+        .co-form {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 24px; text-align: left;
+        }
+
+        .co-form-group { display: flex; flex-direction: column; }
+        .co-form-group.full-width { grid-column: 1 / -1; }
+
+        .co-form-group label {
+            font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px;
+            color: rgba(255,255,255,0.6) !important; font-weight: 700;
+        }
+
+        .co-form-group input, .co-form-group textarea {
+            background: rgba(15, 15, 15, 0.85) !important; 
+            border: 1px solid rgba(255, 255, 255, 0.15) !important;
+            padding: 22px !important; color: #ffffff !important; border-radius: 8px !important; 
+            font-size: 1rem !important; outline: none !important; backdrop-filter: blur(20px); 
+            transition: all 0.3s ease; font-family: 'Inter', sans-serif;
+            will-change: border-color, box-shadow;
+        }
+
+        .co-form-group input::placeholder, .co-form-group textarea::placeholder { color: rgba(255,255,255,0.3) !important; }
+
+        .co-form-group input:focus, .co-form-group textarea:focus {
+            border-color: #00f2ff !important; background: rgba(25, 25, 25, 0.95) !important;
+            box-shadow: 0 0 0 3px rgba(0, 242, 255, 0.1) !important;
+        }
+
+        .co-form-actions {
+            grid-column: 1 / -1; display: flex; gap: 16px; margin-top: 30px;
+        }
+
+        .co-submit-btn {
+            flex: 2; background: #ffffff !important; color: #000000 !important; padding: 22px !important; 
+            border: none !important; border-radius: 8px !important; font-weight: 800 !important; 
+            text-transform: uppercase !important; letter-spacing: 1.5px !important; cursor: pointer !important;
+            transition: all 0.3s ease !important; display: flex; align-items: center; justify-content: center;
+            font-size: 0.9rem !important;
+        }
+
+        .co-ai-btn {
+            flex: 1; background: rgba(0, 242, 255, 0.05) !important; color: #00f2ff !important; padding: 22px !important;
+            border: 1px solid rgba(0, 242, 255, 0.4) !important; border-radius: 8px !important;
+            font-weight: 800 !important; text-transform: uppercase !important; font-size: 0.8rem !important; 
+            cursor: pointer !important; display: flex; align-items: center; justify-content: center; gap: 10px;
+            transition: all 0.3s ease !important;
+        }
+
+        .co-submit-btn:hover { background: #00f2ff !important; transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0, 242, 255, 0.2); }
+        .co-ai-btn:hover { background: rgba(0, 242, 255, 0.15) !important; transform: translateY(-3px); }
+
+        .co-ai-status {
+            grid-column: 1 / -1; color: #00f2ff; font-size: 0.85rem; font-weight: 600;
+            display: none; align-items: center; gap: 12px; margin-top: 15px;
+            padding: 16px; background: rgba(0,242,255,0.08); border-left: 3px solid #00f2ff;
+            border-radius: 4px;
+        }
+
+        .co-spinner { width: 16px; height: 16px; border: 2px solid rgba(0,242,255,0.2); border-top-color: #00f2ff; border-radius: 50%; animation: spin 0.8s linear infinite; }
+
+        .co-footer-bottom {
+            margin-top: 100px; padding-top: 40px; border-top: 1px solid rgba(255,255,255,0.05);
+            display: flex; justify-content: space-between; color: rgba(255,255,255,0.4); font-size: 0.75rem; width: 100%;
+            text-transform: uppercase; letter-spacing: 2px;
+        }
+
+        @media (max-width: 768px) {
+            .co-form, .co-form-actions { grid-template-columns: 1fr; flex-direction: column; }
+            .hero-intro h1 { font-size: 3.8rem; letter-spacing: -2px; }
+            .co-footer { padding: 200px 20px 80px; }
+        }
+    </style>
+</head>
+
+<body>
+    
+    <div class="film-grain"></div>
+    
+    <!-- FONDO HOLOGRÁFICO DINÁMICO -->
+    <div class="holographic-bg">
+        <div class="liquid-aura aura-1"></div>
+        <div class="liquid-aura aura-2"></div>
+        <div class="liquid-aura aura-3"></div>
+    </div>
+
+    <!-- 1. PORTADA DIFUMINADA -->
+    <section class="hero-intro" id="hero">
+        <p>Visionary Design & Direction</p>
+        <h1 id="hero-title">CHRISTIAN<br>ORTIZ</h1>
+        <p>Studio Portfolio 2025</p>
+    </section>
+
+    <!-- 2. GALERÍA SECUENCIAL ULTRA RÁPIDA -->
+    <div id="app">
+        <div class="App-app-AxT">
+            <div class="FocusedModal-modal-rUJ">
+                <div class="FocusedModal-content-i9a FocusedModal-modalContent-Pcr">
+                    <div id="project-modules">
+                        
+                        <!-- Módulos de Imagen con Optimización de carga (Ultra Fast) -->
+                        <section class="Project-projectModuleContainer-BtF"><div class="project-module-image"><img src="https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/e77f2c231612085.688c2d2d23982.png" alt="Portafolio 1" fetchpriority="high" decoding="async"></div></section>
+                        <section class="Project-projectModuleContainer-BtF"><div class="project-module-image"><img src="https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/2b7f6d231612085.688d7bbc5a1e5.png" alt="Portafolio 2" loading="lazy" decoding="async"></div></section>
+                        <section class="Project-projectModuleContainer-BtF"><div class="project-module-image"><img src="https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/42c1ab231612085.689a6c1b774b3.png" alt="Portafolio 3" loading="lazy" decoding="async"></div></section>
+                        <section class="Project-projectModuleContainer-BtF"><div class="project-module-image"><img src="https://mir-s3-cdn-cf.behance.net/project_modules/1400/cbe223231612085.689a9cea0244a.gif" alt="Animación 1" loading="lazy" decoding="async"></div></section>
+                        <section class="Project-projectModuleContainer-BtF"><div class="project-module-image"><img src="https://mir-s3-cdn-cf.behance.net/project_modules/1400/428efc231612085.689b96710f20c.gif" alt="Animación 2" loading="lazy" decoding="async"></div></section>
+                        <section class="Project-projectModuleContainer-BtF"><div class="project-module-image"><img src="https://mir-s3-cdn-cf.behance.net/project_modules/1400/0cfbaf231612085.689a8c445cb27.gif" alt="Animación 3" loading="lazy" decoding="async"></div></section>
+                        <section class="Project-projectModuleContainer-BtF"><div class="project-module-image"><img src="https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/9ac568231612085.689ae4515e840.png" alt="Portafolio 4" loading="lazy" decoding="async"></div></section>
+                        <section class="Project-projectModuleContainer-BtF"><div class="project-module-image"><img src="https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/687779231612085.689adb75a9276.png" alt="Portafolio 5" loading="lazy" decoding="async"></div></section>
+                        <section class="Project-projectModuleContainer-BtF"><div class="project-module-image"><img src="https://mir-s3-cdn-cf.behance.net/project_modules/1400/260d28231612085.689adb75a88b1.gif" alt="Animación 4" loading="lazy" decoding="async"></div></section>
+                        <section class="Project-projectModuleContainer-BtF"><div class="project-module-image"><img src="https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/d60021231612085.689adb75a8e2c.png" alt="Portafolio 6" loading="lazy" decoding="async"></div></section>
+                        <section class="Project-projectModuleContainer-BtF"><div class="project-module-image"><img src="https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/335404231612085.689ae4515eccf.png" alt="Portafolio 7" loading="lazy" decoding="async"></div></section>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3. FOOTER (Fusión Perfecta con la última imagen) -->
+    <footer class="co-footer">
+        <div class="co-footer-glow"></div>
+        <div class="co-footer-content">
+            <h2>Hagamos algo épico.</h2>
+            
+            <form id="co-proposal-form" action="https://formspree.io/f/christian.ortizalcivar@gmail.com" method="POST" class="co-form">
+                <div class="co-form-group">
+                    <label>Nombre</label>
+                    <input type="text" name="name" placeholder="Tu nombre" required>
+                </div>
+                <div class="co-form-group">
+                    <label>Email</label>
+                    <input type="email" name="email" placeholder="email@dominio.com" required>
+                </div>
+                <div class="co-form-group">
+                    <label>Teléfono</label>
+                    <input type="tel" name="phone" placeholder="+00 000 000 (opcional)">
+                </div>
+                <div class="co-form-group">
+                    <label>Proyecto</label>
+                    <input type="text" name="subject" placeholder="Branding, Web, Creative Direction..." required>
+                </div>
+                <div class="co-form-group full-width">
+                    <label>Visión del Proyecto</label>
+                    <textarea id="co-ai-textarea" name="message" rows="6" placeholder="Cuéntame tu idea y el asistente Gemini IA la profesionalizará..." required></textarea>
+                    <div id="co-ai-loading" class="co-ai-status">
+                        <div class="co-spinner"></div> El asistente Gemini está redactando tu propuesta...
+                    </div>
+                </div>
+                
+                <div class="co-form-actions">
+                    <button type="submit" class="co-submit-btn">Enviar Propuesta</button>
+                    
+                    <button type="button" id="co-ai-enhance-btn" class="co-ai-btn">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L14.5 9.5L22 12L14.5 14.5L12 22L9.5 14.5L2 12L9.5 9.5L12 2Z"/></svg>
+                        Asistir con IA
+                    </button>
+                </div>
+            </form>
+
+            <div class="co-footer-bottom">
+                <div>CHRISTIAN ORTIZ STUDIO — ALL RIGHTS RESERVED</div>
+                <div>christian.ortizalcivar@gmail.com</div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- SCRIPT OPTIMIZADO -->
+    <script>
+        const apiKey = ""; 
+        const aiBtn = document.getElementById('co-ai-enhance-btn');
+        const textarea = document.getElementById('co-ai-textarea');
+        const loading = document.getElementById('co-ai-loading');
+        const heroTitle = document.getElementById('hero-title');
+
+        // RequestAnimationFrame para un scroll cinematográfico sin caídas de FPS
+        let isTicking = false;
+        window.addEventListener('scroll', () => {
+            if (!isTicking) {
+                window.requestAnimationFrame(() => {
+                    let value = window.scrollY;
+                    let opacity = 1 - (value / 600);
+                    let blur = value / 40;
+                    
+                    if (opacity >= 0) {
+                        heroTitle.style.opacity = opacity;
+                        heroTitle.style.transform = `translate3d(0, ${value * 0.25}px, 0) scale(${1 - (value * 0.0004)})`;
+                        heroTitle.style.filter = `blur(${blur}px)`;
+                    }
+                    isTicking = false;
+                });
+                isTicking = true;
+            }
+        }, { passive: true });
+
+        // Lógica de Asistente Gemini IA
+        async function fetchGemini(prompt, retries = 5, delay = 1000) {
+            const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
+            const payload = {
+                contents: [{ parts: [{ text: prompt }] }],
+                systemInstruction: { 
+                    parts: [{ text: "Eres el Director Creativo Estratégico de Christian Ortiz. Transforma el brief del cliente en un documento profesional, detallado y lujoso. Mantén el idioma original." }] 
+                }
+            };
+
+            for (let i = 0; i < retries; i++) {
+                try {
+                    const response = await fetch(url, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
+                    const data = await response.json();
+                    return data.candidates?.[0]?.content?.parts?.[0]?.text;
+                } catch (err) {
+                    if (i === retries - 1) throw err;
+                    await new Promise(r => setTimeout(r, delay));
+                    delay *= 2;
+                }
+            }
+        }
+
+        aiBtn.addEventListener('click', async () => {
+            const txt = textarea.value.trim();
+            if (txt.length < 5) return;
+            aiBtn.disabled = true;
+            loading.style.display = 'flex';
+            try {
+                const res = await fetchGemini(`Profesionaliza este brief para un artista visual: ${txt}`);
+                if (res) textarea.value = res;
+            } catch (e) { console.error(e); }
+            finally { aiBtn.disabled = false; loading.style.display = 'none'; }
+        });
+    </script>
+</body>
+</html>

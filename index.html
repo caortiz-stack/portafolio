@@ -381,6 +381,9 @@
         const formFeedback = document.getElementById('co-form-feedback');
         const submitBtn = document.querySelector('.co-submit-btn');
 
+        // Variable para controlar la animación y evitar que choque con los errores
+        let popoverTimeout; 
+
         // === ENVÍO FORMSUBMIT (NUEVO, ADIÓS FORMSPREE) ===
         if (form) {
             form.addEventListener('submit', async (e) => {
@@ -395,7 +398,6 @@
                 const data = Object.fromEntries(formData.entries());
 
                 try {
-                    // Petición AJAX limpia a FormSubmit
                     const response = await fetch("https://formsubmit.co/ajax/christian.ortizalcivar@gmail.com", {
                         method: 'POST',
                         headers: { 
@@ -448,31 +450,32 @@
             if (txt.length < 5) {
                 aiErrorMsg.textContent = "⚠️ Escribe primero una idea básica en el campo principal.";
                 aiErrorMsg.style.display = 'block';
+                
+                clearTimeout(popoverTimeout);
                 popover.style.display = 'flex';
                 setTimeout(() => popover.classList.add('active'), 10);
                 textarea.focus();
                 return;
             }
             aiErrorMsg.style.display = 'none';
+            clearTimeout(popoverTimeout);
             popover.style.display = 'flex';
             setTimeout(() => popover.classList.add('active'), 10);
         });
 
         closePopoverBtn.addEventListener('click', () => {
             popover.classList.remove('active');
-            setTimeout(() => popover.style.display = 'none', 300);
+            popoverTimeout = setTimeout(() => popover.style.display = 'none', 300);
         });
 
         // === CEREBRO IA CON AUTO-FALLBACK ===
         async function fetchGemini(prompt, retries = 2, delay = 1000) {
-            // LISTA DE MODELOS A INTENTAR: Si uno falla, automáticamente intenta el siguiente.
-            // gemini-pro es la versión heredada que el 100% de las cuentas de Google soporta.
-            const modelsToTry = ["gemini-1.5-flash", "gemini-pro"];
+            // Añadido explicitamente el -latest para solucionar el error en tu cuenta
+            const modelsToTry = ["gemini-1.5-flash-latest", "gemini-1.5-flash", "gemini-pro"];
             
             for (let model of modelsToTry) {
                 const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`;
                 
-                // Preparar los datos. Si es el modelo viejo (gemini-pro), adaptamos la estructura para que no de error
                 let payload;
                 if (model === "gemini-pro") {
                     payload = {
@@ -497,7 +500,6 @@
                     const data = await response.json();
                     
                     if (!response.ok) {
-                        // Si Google dice "Not Found" en este modelo, el ciclo continue e intentará el siguiente
                         if (data.error && data.error.message && data.error.message.includes('not found')) {
                             console.warn(`Modelo ${model} no disponible, intentando con el modelo de respaldo...`);
                             continue; 
@@ -507,7 +509,6 @@
                     
                     return data.candidates?.[0]?.content?.parts?.[0]?.text;
                 } catch (err) {
-                    // Si ya se intentaron todos los modelos y falló, lanzar el error
                     if (model === modelsToTry[modelsToTry.length - 1]) throw err; 
                 }
             }
@@ -517,8 +518,10 @@
             const txt = textarea.value.trim();
             const instruction = customInstruction.value.trim();
 
+            // Ocultar popup eliminando la posibilidad de condición de carrera
+            clearTimeout(popoverTimeout);
             popover.classList.remove('active');
-            setTimeout(() => popover.style.display = 'none', 300);
+            popoverTimeout = setTimeout(() => popover.style.display = 'none', 300);
 
             aiTriggerBtn.disabled = true;
             loading.style.display = 'flex';
@@ -532,11 +535,16 @@
                 const res = await fetchGemini(promptBase);
                 if (res) {
                     textarea.value = res; 
+                } else {
+                    throw new Error("La IA no devolvió respuesta.");
                 }
             } catch (e) { 
                 console.error(e);
                 aiErrorMsg.textContent = "Error: " + e.message;
                 aiErrorMsg.style.display = 'block';
+                
+                // Volver a abrir el popup para mostrar el error visiblemente
+                clearTimeout(popoverTimeout);
                 popover.style.display = 'flex';
                 setTimeout(() => popover.classList.add('active'), 10);
             } finally { 

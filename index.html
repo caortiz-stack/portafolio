@@ -300,7 +300,6 @@
         <div class="co-footer-content">
             <h2>Hagamos algo épico.</h2>
             
-            <!-- Acción actualizada a FormSubmit -->
             <form id="co-proposal-form" action="https://formsubmit.co/christian.ortizalcivar@gmail.com" method="POST" class="co-form">
                 <input type="hidden" name="_captcha" value="false">
                 <input type="hidden" name="_subject" value="🌟 Nueva propuesta de proyecto desde tu Portafolio">
@@ -381,10 +380,9 @@
         const formFeedback = document.getElementById('co-form-feedback');
         const submitBtn = document.querySelector('.co-submit-btn');
 
-        // Variable para controlar la animación y evitar que choque con los errores
         let popoverTimeout; 
 
-        // === ENVÍO FORMSUBMIT (NUEVO, ADIÓS FORMSPREE) ===
+        // === ENVÍO FORMSUBMIT ===
         if (form) {
             form.addEventListener('submit', async (e) => {
                 e.preventDefault();
@@ -468,10 +466,10 @@
             popoverTimeout = setTimeout(() => popover.style.display = 'none', 300);
         });
 
-        // === CEREBRO IA CON AUTO-FALLBACK ===
+        // === CEREBRO IA CONFIGURADO ===
         async function fetchGemini(prompt, retries = 2, delay = 1000) {
-            // Añadido explicitamente el -latest para solucionar el error en tu cuenta
-            const modelsToTry = ["gemini-1.5-flash-latest", "gemini-1.5-flash", "gemini-pro"];
+            // Intentará primero con la versión 2.5 Flash, y si tu cuenta no la tiene, usará la 1.5
+            const modelsToTry = ["gemini-2.5-flash", "gemini-1.5-flash-latest", "gemini-pro"];
             
             for (let model of modelsToTry) {
                 const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`;
@@ -501,13 +499,20 @@
                     
                     if (!response.ok) {
                         if (data.error && data.error.message && data.error.message.includes('not found')) {
-                            console.warn(`Modelo ${model} no disponible, intentando con el modelo de respaldo...`);
+                            console.warn(`Modelo ${model} no encontrado, probando el siguiente...`);
                             continue; 
                         }
-                        throw new Error(data.error?.message || "Error al procesar la respuesta");
+                        throw new Error(data.error?.message || "Error al procesar la respuesta.");
+                    }
+
+                    // Detector de filtros de seguridad (Si Google bloquea la respuesta por lenguaje)
+                    const candidate = data.candidates?.[0];
+                    if (!candidate) throw new Error("La API no devolvió contenido.");
+                    if (candidate.finishReason === "SAFETY") {
+                        throw new Error("El contenido fue bloqueado por los filtros de seguridad de Google.");
                     }
                     
-                    return data.candidates?.[0]?.content?.parts?.[0]?.text;
+                    return candidate.content?.parts?.[0]?.text;
                 } catch (err) {
                     if (model === modelsToTry[modelsToTry.length - 1]) throw err; 
                 }
@@ -518,7 +523,6 @@
             const txt = textarea.value.trim();
             const instruction = customInstruction.value.trim();
 
-            // Ocultar popup eliminando la posibilidad de condición de carrera
             clearTimeout(popoverTimeout);
             popover.classList.remove('active');
             popoverTimeout = setTimeout(() => popover.style.display = 'none', 300);
@@ -536,14 +540,13 @@
                 if (res) {
                     textarea.value = res; 
                 } else {
-                    throw new Error("La IA no devolvió respuesta.");
+                    throw new Error("La IA analizó la petición pero devolvió un texto vacío.");
                 }
             } catch (e) { 
                 console.error(e);
-                aiErrorMsg.textContent = "Error: " + e.message;
+                aiErrorMsg.textContent = "Detalle: " + e.message;
                 aiErrorMsg.style.display = 'block';
                 
-                // Volver a abrir el popup para mostrar el error visiblemente
                 clearTimeout(popoverTimeout);
                 popover.style.display = 'flex';
                 setTimeout(() => popover.classList.add('active'), 10);
